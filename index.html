@@ -1,22 +1,22 @@
 <html>
 
 <head>
-    <title>Responsive Registration Form</title>
+    <title>User Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onLoad="initClock()">
+<body>
     <div class="container">
         <center>
             <div class="title">User Form</div>
         </center>
-        <form action="">
+        <form action="" onsubmit="return (checkForm())" name="userForm">
 
             <div class="account-details">
                 <div class="form-group">
                     <label class="form-title" for="">Email</label>
-                    <input type="email" placeholder="Enter your email" required>
+                    <input type="email" pattern="[^ @]*@[^ @]*" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label class="form-title" for="">Password
@@ -89,7 +89,7 @@
                     </div> -->
                 </div>
             </div>
-            <!-- <div id="message">
+            <!-- <div id="msg">
                 <h3>Password must contain the following:</h3>
                 <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
                 <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
@@ -111,6 +111,37 @@
                 document.getElementById('msg').innerHTML = 'not matching'
             }
         }
+
+        // function validate() {
+        //     // console.log("asdfsdf")
+        //     var gender = document.reg_form.gender
+        //     if (gender.value.length <= 0) {
+        //         alert("Gender is required")
+        //         gender.focus()
+        //         return false
+        //     }
+        // }
+
+        function checkForm() {
+            // console.log("first")
+            let chosenOption = ""
+            const len = document.userForm.gender.length
+
+            for (i = 0;i < len;i++) {
+                if (document.userForm.gender[i].checked) {
+                    chosenOption = document.userForm.gender[i].value
+                }
+            }
+
+            if (chosenOption == "") {
+                alert("Please choose your gender!")
+                return false
+            } else {
+                console.log(chosenOption)
+            }
+        }
+
+
         // var myInput = document.getElementById("txtPassword")
         // var letter = document.getElementById("letter")
         // var capital = document.getElementById("capital")
